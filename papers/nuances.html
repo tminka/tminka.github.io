@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Nuances of probability theory</title>
+</head>
+
+<body>
+<h1>Nuances of probability theory</h1>
+
+or: "Why you must take a probability course in order to understand pattern
+recognition."
+
+<h2>Conditioning is not the same as implication</h2>
+
+<p>
+The probability statement <kbd>P(A | B) = p</kbd> has a very different
+meaning from the logical statement "B implies A with
+certainty p".  The logical statement means that whenever <kbd>B</kbd> is
+true then <kbd>A</kbd> is true with certainty <kbd>p</kbd>.  This applies
+regardless of any other information we may have.  In other words, it is
+modular.  But the probability statement is not modular: it applies when the
+<em>only</em> thing we know is <kbd>B</kbd>.  If anything else is known,
+e.g. <kbd>C</kbd>, than we must refer to <kbd>P(A | B, C)</kbd> instead.
+The only exception is when we can prove that <kbd>C</kbd> is conditionally
+independent of <kbd>A</kbd> given <kbd>B</kbd>, so that <kbd>P(A | B, C) =
+P(A | B)</kbd>.
+</p>
+
+<p>
+To illustrate why this is important, let
+<ul>
+<li><kbd>A</kbd> = "It rained last night"
+<li><kbd>B</kbd> = "My grass is wet"
+<li><kbd>C</kbd> = "The sprinkler was on last night"
+</ul>
+Given only <kbd>B</kbd>, it is reasonable to conclude <kbd>A</kbd>.  But if
+<kbd>B</kbd> is deduced from <kbd>C</kbd>, then it is not reasonable to
+conclude <kbd>A</kbd>.  </p>
+
+<p>
+This point was made eloquently by <a
+href="http://www.amazon.com/exec/obidos/ASIN/1558604790">Pearl</a> (p57).
+He used it to show that logic based on "certainty factors" is not an adequate
+replacement for probability theory.
+</p>
+
+<h2>Query sensitivity</h2>
+
+<p> In the rain/sprinkler problem, it seems obvious that we need to include
+<kbd>C</kbd>.  But sometimes we drop relevant information without realizing
+it.  Consider this example:
+</p>
+
+<blockquote>
+<p>
+My neighbor has two children.  Assuming that the gender of a child is
+like a coin flip, it is most likely, a priori, that my neighbor has one boy
+and one girl, with probability 1/2.  The other possibilities---two boys or
+two girls---have probabilities 1/4 and 1/4.
+</p>
+
+<p>
+Suppose I ask him whether he has any boys, and he says yes.  What is the
+probability that one child is a girl?  By the above reasoning, it is twice
+as likely for him to have one boy and one girl than two boys, so the odds
+are 2:1 which means the probability is 2/3.  Bayes' rule will give the same
+result.  </p>
+
+<p>
+Suppose instead that I happen to see one of his children run by, and it is
+a boy.  What is the probability that the other child is a girl?  
+Observing the outcome of one coin has no affect on
+the other, so the answer should be 1/2.  In fact that is what Bayes' rule
+says in this case.
+If you don't believe this, draw a tree describing the possible
+states of the world and the possible observations, along with the
+probabilities of each leaf.  Condition on the event observed by setting all
+contradictory leaf probabilities to zero and renormalizing the nonzero leaves.
+The two cases have two different trees and thus two different answers.
+</p>
+</blockquote>
+
+<p>
+This seems like a paradox because it seems that in both cases we could
+condition on the fact that "at least one child is a boy."  But that is not
+correct; you must condition on the event actually observed, not its logical
+implications.  In the first case, the event was "He said yes to my
+question."  In the second case, the event was "One child appeared in front
+of me."  The generating distribution is different for the two events.
+Probabilities reflect the number of possible ways an event can happen, like
+the number of roads to a town.  Logical implications are further down the
+road and may be reached in more ways, through different towns.  The
+different number of ways changes the probability.  </p>
+
+<p>
+This property of probability theory, which is different from logic, is
+discussed at length by <a
+href="http://www.amazon.com/exec/obidos/ASIN/1558604790">Pearl</a> (p58).
+In logic, it does not matter how a proposition was arrived at.  But in
+probability, the query cannot be ignored.  Here is another example, based
+on Pearl's: </p>
+
+<blockquote>
+Suppose you, a Bostonian, have entered the New Hampshire lottery along with
+999 people from New Hampshire.  The prize will be awarded to exactly one of
+the 1000 people.  By sheer luck, you obtain a computer printout listing 998
+participants; each name is marked "no prize", and yours is not among them.
+Should your chances of winning increase from 1/1000 to 1/2?  Under normal
+circumstances, yes.  But suppose while poring anxiously over the list you
+discover the query that produced it: "Print the names of any 998 New
+Hampshire residents who did not win."  Since you are from Boston, the list
+could not possibly have had you on it.  Thus it is completely irrelevant to
+you; your probability of winning is still 1/1000.
+(If you are not convinced, draw a tree as before.)
+</blockquote>
+
+<p>
+What if you just have raw facts without the query that generated them?
+Unless you can prove that the query is irrelevant, you should average over
+likely queries.  The only time information can safely be omitted is when it
+is statistically independent from the quantity of interest.  This is why
+independence diagrams are so important for efficient probabilistic
+computation.  </p>
+
+<p>
+The maximum entropy principle has been proposed as a way to incorporate
+facts without an associated query.  If you are starting from a uniform
+distribution, the idea is to find a distribution consistent with the facts
+which has maximum entropy.  (If you are starting from a non-uniform
+distribution, you find a distribution which has minimum cross-entropy from
+the current one.)  It is a useful approximation, but only an approximation;
+you can do better by knowing something about the query.  The maximum
+entropy principle essentially assumes that any state of the world
+consistent with the facts is equally likely to have produced them.  In the
+two children example, the maximum entropy distribution given "at least one
+child is a boy" assigns 2/3 probability to the other being a girl, which
+is consistent with some but not all the different ways we might have arrived
+at that information.  </p>
+
+<!--
+(Maximum entropy has also been used for density estimation, but it has a
+different interpretation in that context.  In that context, one performs
+maximum a-posteriori estimation where the prior favors densities with
+larger entropy.)  <p>
+-->
+
+<!--
+<h2>Density functions are not mass functions</h2>
+
+You must use the Jacobian when applying a transformation.
+Maximum density is not the same as maximum mass.
+<p>
+
+The conditioning rule for densities looks like, but is not semantically the
+same as, the rule for events.
+<p>
+-->
+
+<!-- see notes/logs/98/12.19 -->
+
+<h2>Randomness is subjective</h2>
+
+In English, randomness is an intrinsic property of an event.  For example,
+"Boston weather is random."  But in probability theory, randomness is a
+function of the observer; in particular, the amount of information you
+have.  If you look outside and see water drops falling down, the weather is
+not random: you can be quite sure it is raining.  You might still say that
+tomorrow's weather is random, but a meteorologist might not.
+<p>
+
+A basic assumption of probability theory is that given enough
+information, the status of any event can be reduced to a certainty.
+Randomness is therefore the absence of information, and therefore
+subjective.  The probability distributions we assign to events always
+represent our own lack of information; someone with different information
+would assign different probabilities.  Another way to say it is that all
+probabilities are conditional probabilities.  In many derivations, these
+conditions are omitted for brevity, but it is important to remind oneself
+that the conditions are still there.  
+<!--
+Conditioning information defines the
+sample space; different information implies different sample spaces.
+-->
+<p>
+
+Statisticians are often asked, "Is that the <em>real</em> distribution?"
+There is no answer to such a question, because the question presupposes
+that randomness is intrinsic, when it is not.  A more appropriate question
+would be, "Does that distribution follow from the data, your stated
+assumptions, and the axioms of probability theory?"  
+<!--
+(This is a reasonable
+question to ask; often statisticians take shortcuts that they sweep under
+the rug.)  
+-->
+Distributions encode the information available to the
+practitioner; nothing more.  <p>
+
+Probability theory is not about absolute truth.
+It is about inference consistent with certain axioms.  It
+cannot tell you how often an event will actually occur in practice; that is
+an objective quantity that you can only approximate, by acquiring more and
+more information about the random process.  <p>
+
+A common, but flawed, rebuttal to the subjectivist argument is that the
+success of quantum physics "proves" that some things are intrinsically
+random.  But quantum theory does not prove intrinsic randomness any more
+than the fact that coin flipping, despite being in the realm of Newton's
+laws, is best described statistically, or that random number algorithms,
+which are completely deterministic, may pass statistical tests.  
+<!--
+Physical
+equations can be proven; not our interpretations of them.  
+-->
+The convenience
+of a mental model does not prove that the model is correct.  
+<!--
+If faulty
+reasoning leads to a true conclusion, it does not become any less faulty.
+-->
+<p>
+
+This is a favorite topic of <a
+href="http://bayes.wustl.edu/etj/etj.html">Edwin Jaynes</a>, who focused
+especially on the subjectivity of entropy in physics.  For example, see <a
+href="http://bayes.wustl.edu/etj/node1.html">"Clearing up Mysteries - The
+Original Goal"</a> and <a
+href="http://bayes.wustl.edu/etj/node1.html">"Probability in Quantum
+Theory"</a>.  <p>
+
+<h2>Statistical independence is not causal independence</h2>
+
+Webster's dictionary defines <var>x</var> and <var>y</var> to be
+independent when
+<ul>
+<li><var>x</var> is not subject to control by <var>y</var>, and
+<li>they do not both have a larger controlling entity
+</ul>
+Notice that this definition of independence, which probabilists call
+"causal independence", is an intrinsic property of <var>x</var> and
+<var>y</var>.  Statistical independence, on the other hand, is not
+intrinsic, and does not imply nor is implied by causal independence.
+
+Since statistical independence is determined by probabilities, it is
+subjective.  People with different information, even when they are acting
+perfectly logically, may come to different conclusions about whether
+<var>x</var> and <var>y</var> are statistically independent.  
+<p>
+
+For example, suppose <var>a</var>, <var>b</var>, and <var>s</var> are all
+independent Gaussian random variables.  Define <kbd>x = a + s</kbd> and
+<kbd>y = b + s</kbd>.  Given only this information, <var>x</var> and
+<var>y</var> are dependent (make sure you understand why this is true).
+<p>
+
+Suppose I now tell you the value of <var>s</var>.  Conditional on this
+information, <var>x</var> and <var>y</var> are <em>independent</em>.
+Suppose I also tell you that the product <var>xy</var> is positive.
+This makes <var>x</var> and <var>y</var> dependent again.
+In addition to all this information, suppose I now tell you that both 
+<var>x</var> and <var>y</var> are positive.
+This makes them independent again.
+<p>
+
+<h2>Improbable data does not imply a bad theory</h2>
+
+Let's say you propose a statistical model of some phenomenon.  If you
+collect some data which turns out to have low probability under the model,
+does that support or refute your model?  The answer is neither.  Data can
+only support one model vs. another; it can say nothing about one model in
+isolation.  If the other model assigns higher probability to the data, then
+the data refutes your model.  If the other model assigns lower probability,
+then the data supports your model.  It does not matter what the actual
+probability value is, and it should not, because improbable data is a fact
+of life.  <p>
+
+Unfortunately, orthodox model selection via p-values is based on flawed
+reasoning of this sort.  Note that the p-value is not the probability of
+the hypothesis.  The frequentists gave it the mysterious name "p-value"
+because it is a mysterious quantity that means very little objectively.
+<p>
+
+A bad argument that I found in the New York Times illustrates the problem.
+All of today's climate models, when started with the Earth's conditions a few
+million years ago, give low probability to the favorable conditions for
+life that we see today.  Therefore, the article concludes, these models
+must be flawed, and we shouldn't believe what they say about global warming
+and the like.  The problem is that we know from studies of the universe
+that favorable conditions for life are very rare.  So following the logic
+in the article, the meteorologists on <em>any</em> planet must necessarily
+have bad models of climate.
+<p>
+
+<!--
+<h2>The weight of second-hand evidence is subjective</h2>
+
+Suppose we are evaluating two hypotheses.  As discussed above, data
+that we observe first-hand will support one hypothesis and refute the
+other, regardless of whatever personal biases we may have.  But if we
+observe data second-hand, i.e. from a source that we may doubt, then
+personal biases re-enter the equation.  In fact, it is possible for two
+perfectly logical people, upon seeing the same second-hand data and the
+same hypotheses, to disagree on which hypothesis is supported by the data.
+<p>
+
+For example, suppose a salesman claims that a new drug can cure cancer, and
+has numerous testimonials to support his claim.  Based on prior knowledge
+of the salesman and of medicine, person <var>A</var> believes the salesman
+is probably lying.  Person <var>B</var>, who has different prior knowledge,
+believes the salesman is honest.  Both people hear of a new testimonial in
+which a cancer sufferer reports being cured within ten seconds of taking
+the drug.  Person <var>B</var> sees this as additional proof that the drug
+works; after all, with a time lag so short, there is little else to account
+for the recovery.  Person <var>A</var>, on the other hand, sees this as
+additional proof that the drug does not work; the claim is so improbable
+that it must be false, and this puts all other testimonials in doubt.
+Both people are acting in a perfectly logical way, given their prior
+knowledge, yet they disagree on the implication of the same piece of data.
+<p>
+
+A consequence of this is that once a critical threshold of belief is
+reached, additional second-hand data can only support one's belief.  
+<p>
+-->
+
+<h2>Fulfilled predictions carry information</h2>
+
+Suppose you have been hired to build a classifier to distinguish bowling
+balls from ping-pong balls by weight.  Since bowling balls weigh more than
+ping-pong balls, the classifier can simply compare the weight to a
+threshold and say "ping-pong ball" if it is below the threshold and
+"bowling ball" if above.  Even the lightest bowling ball is heavier than a
+ping-pong ball, so if the threshold is set right, 100% accuracy is
+possible.  From prior knowledge you know that the true threshold is
+somewhere between 1 and 9, with equal probability.  Given this information
+alone, your best guess is to use a threshold of 5.  <p>
+
+To test the system, you place an object on the scale; it weighs 7 and so
+you classify it as a bowling ball.  An expert on bowling balls inspects the
+object and lets you know that it is indeed a bowling ball.  Does this give
+you any useful information?  Yes, because it eliminates any threshold above
+7.  Together with your prior knowledge, this means that the true threshold
+is between 1 and 7, with equal probability.  And so your best guess is now
+to use a threshold of 4.  <p>
+
+This phenomenon suggests that the error-driven training procedure used for
+neural nets, where only erroneous predictions can alter the classifier, is
+incomplete.  Error-driven training does not average over all classifiers
+that are consistent with the data, which is necessary for making optimal
+inferences.  Newer techniques like the support vector machine and
+Bayes-point machine are not error driven and come closer to true
+probabilistic averaging.  <p>
+
+The effect of fulfilled predictions can be even more extreme than described
+here.  The optimal classifer can change in an arbitrary way, with new
+decision boundaries appearing or disappearing, when a prediction is
+confirmed.  The set of consistent classifiers is a convex polytope in the
+space of classifiers.  The optimal classifier is the polytope's center of
+mass.  New information cuts away pieces of the polytope, thus moving the
+center of mass.  <p>
+
+<hr>
+<address><a href="/">Thomas P Minka</a></address>
+<!-- hhmts start -->
+Last modified: Thu Jun 08 10:36:34 GMT 2006
+<!-- hhmts end -->
+</body> </html>

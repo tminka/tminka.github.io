@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Optical character recognition papers</title>
+</head>
+
+<body>
+<h1>Optical character recognition papers</h1>
+
+This is work I did as a summer intern at Xerox PARC in the Document
+Image Decoding Group.  Document Image Decoding is a probabilistic
+modeling approach to OCR using two-dimensional HMMs.  The work was
+completed in 1998 and released to the public in 2001.  <p>
+
+Iterated complete path search is a general speedup method for dynamic
+programming which was invented by Gary Kopec and further developed in these
+papers.  It can be applied to inference in many stochastic models,
+including segmental HMMs.  <p>
+
+<hr>
+<h3>
+<a
+href="minka2001_icp.pdf">
+Document image decoding using iterated complete path search</a></h3>
+
+T. P. Minka, D. S. Bloomberg, and K. Popat<br>
+Proceedings of IS&T/SPIE Electronic Imaging 2001: Document Recognition and
+Retrieval VIII, January 2001.
+<p>
+
+The computation time of Document Image Decoding can be significantly
+reduced by employing heuristics in the search for the best decoding of a
+text line. By using a cheap upper bound on template match scores, up to
+99.9% of the potential template matches can be avoided. In the Iterated
+Complete Path method, template matches are performed only along the best
+path found by dynamic programming on each iteration. When the best path
+stabilizes, the decoding is optimal and no more template matches need be
+performed. Computation can be further reduced in this scheme by exploiting
+the incremental nature of the Viterbi iterations. Because only a few
+trellis edge weights have changed since the last iteration, most of the
+backpointers do not need to be updated. We describe how to quickly identify
+these backpointers, without forfeiting optimality of the path. Together
+these improvements provide a 30x speedup over previous implementations of
+Document Image Decoding.
+<p>
+
+<hr>
+<h3>
+<a href="bloomberg2001_subsampled.pdf">Document image decoding using iterated complete path search with subsampled
+heuristic scoring</a></h3>
+
+D. S. Bloomberg, T. P. Minka, and K. Popat<br>
+Proceedings of the IAPR 2001 International Conference Document
+Analysis and Recognition (ICDAR 2001), September 2001.
+<p>
+
+It has been shown that the computation time of Document Image Decoding can
+be significantly reduced by employing heuristics in the search for the best
+decoding of a text line. In the Iterated Complete Path (ICP) method,
+template matches are performed only along the best path found by dynamic
+programming on each iteration. When the best path stabilizes, the decoding
+is optimal and no more template matches need be performed. In this way,
+only a tiny fraction of potential template matches must be evaluated, and
+the computation time is typically dominated by the evaluation of the
+initial heuristic upper-bound for each template at each location in the
+image.
+<p>
+
+The time to compute this bound depends on the resolution at which the
+matching scores are found. At lower resolution, the heuristic computation
+is reduced, but because a weaker bound is used, the number of Viterbi
+iterations is increased. We present the optimal (lowest upper bound)
+heuristic for any degree of subsampling of multilevel template and/or
+interpolation, for use in text line decoding with ICP. The optimal degree
+of subsampling depends on image quality, but it is typically found that a
+small amount of template subsampling is effective in reducing the overall
+decoding time.
+<p>
+
+<hr>
+<address><a href="/">Thomas P Minka</a></address>
+<!-- hhmts start -->
+Last modified: Tue Nov 01 17:42:31 GMT 2005
+<!-- hhmts end -->
+</body> </html>

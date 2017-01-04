@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>A comparison of numerical optimizers for logistic regression</title>
+</head>
+
+<body>
+<h1>A comparison of numerical optimizers for logistic regression</h1>
+
+Thomas P. Minka<br>
+(2003; revised 10/21/03)
+<p>
+
+Logistic regression is a workhorse of statistics and is closely related to
+methods used in Machine Learning, including the Perceptron and the Support
+Vector Machine.  This note compares eight different algorithms
+for computing the maximum a-posteriori parameter estimate.  A full derivation
+of each algorithm is given.  In particular, a new derivation of Iterative
+Scaling is given which applies more generally than the conventional one.  A
+new derivation is also given for the Modified Iterative Scaling algorithm
+of Collins et al (2002).  Most of the algorithms operate in the primal space,
+but can also work in dual space.  All algorithms are compared in terms
+of computational complexity by experiments on large data sets.  The fastest
+algorithms turn out to be conjugate gradient ascent and quasi-Newton
+algorithms, which far outstrip Iterative Scaling and its variants.
+<p>
+
+<a href="minka-logreg.pdf">PDF</a>
+<p>
+
+Matlab code (requires <a
+href="https://github.com/tminka/lightspeed/">lightspeed</a>): 
+<a href="https://github.com/tminka/logreg/">logreg</a>
+<p>
+
+About the experiments: This paper's experiments were done exclusively on synthetic data.  Other researchers have investigated whether my findings also hold on real-world data.  In every case so far, the real-world studies come to the same conclusions as my synthetic study.
+<p>
+
+Some real-world implementations of the ideas in this paper (including code):
+<ul>
+<li><a href="http://www.cs.utah.edu/~hal/megam/">Notes on
+CG and LM-BFGS Optimization of Logistic Regression</a> by Hal Daume
+<li><a href="http://www-rohan.sdsu.edu/~malouf/pubs.html">A comparison of
+algorithms for maximum entropy parameter estimation</a> by Robert Malouf
+</ul>
+
+<hr>
+An earlier version of this paper:
+
+<h1>Algorithms for maximum-likelihood logistic regression</h1>
+
+Thomas P. Minka<br>
+<a href="http://www.stat.cmu.edu/tr/">CMU Statistics Tech Report</a> 
+<a href="http://www.stat.cmu.edu/tr/tr758/tr758.html">758</a> 
+(2001; revised 9/19/03)
+<p>
+
+Logistic regression is a workhorse of statistics and is increasingly
+popular in machine learning, due to its similarity with the Support Vector
+Machine.  This note reviews seven different algorithms for finding the
+maximum-likelihood estimate.  Iterative Scaling is shown to apply under
+weaker conditions than usually assumed.  A modified iterative scaling
+algorithm is also derived, which is equivalent to the algorithm of
+Collins et al (2000).  The best performers in terms of running time are the
+line search algorithms and Newton-type algorithms, which far outstrip
+Iterative Scaling.
+<p>
+
+Equation (11) has been fixed in this version.
+<p>
+
+<a href="minka-logreg-old.pdf">PDF</a> (370K)
+<p>
+
+<hr>
+<address><a href="/">Tom Minka</a></address>
+<!-- hhmts start -->
+Last modified: Thu Mar 22 14:50:38 GMT 2007
+<!-- hhmts end -->
+</body> </html>

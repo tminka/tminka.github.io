@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Deriving quadrature rules from Gaussian processes</title>
+</head>
+
+<body>
+<h1>Deriving quadrature rules from Gaussian processes</h1>
+
+Thomas P. Minka<br>
+(6/2/00)
+<p>
+
+Quadrature rules are often designed to achieve zero error on a small set of
+functions, e.g. polynomials of specified degree.  A more robust method is
+to minimize average error over a large class or distribution of functions.
+If functions are distributed according to a Gaussian process, then
+designing an average-case quadrature rule reduces to solving a system of
+<var>2n</var> equations, where <var>n</var> is the number of nodes in the
+rule (O'Hagan, 1991).  It is shown how this very general technique can be
+used to design customized quadrature rules, in the style of Yarvin &amp;
+Rokhlin (1998), without the need for singular value decomposition and in
+any number of dimensions.  It is also shown how classical Gaussian
+quadrature rules, trigonometric lattice rules, and spline rules can be
+extended to the average-case and to multiple dimensions by deriving them
+from Gaussian processes.  In addition to being more robust,
+multidimensional quadrature rules designed for the average-case are found
+to be much less ambiguous than those designed for a given polynomial
+degree.
+<p>
+
+<a href="minka-quadrature.ps.gz">Postscript</a>
+(75K)
+
+
+<hr>
+<!-- hhmts start -->
+Last modified: Fri Dec 10 14:24:51 GMT 2004
+<!-- hhmts end -->
+</body> </html>

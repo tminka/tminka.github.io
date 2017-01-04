@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Divergence measures and message passing</title>
+</head>
+
+<body>
+<h1>Divergence measures and message passing</h1>
+
+Tom Minka<br>
+Microsoft Research Technical Report (<a href="http://www.research.microsoft.com/research/pubs/view.aspx?type=Technical%20Report&id=1029">MSR-TR-2005-173</a>), 2005<br>
+<p>
+
+This paper presents a unifying view of message-passing algorithms, as
+methods to approximate a complex Bayesian network by a simpler network with
+minimum information divergence.  In this view, the difference between
+mean-field methods and belief propagation is not the amount of structure
+they model, but only the measure of loss they minimize (`exclusive' versus
+`inclusive' Kullback-Leibler divergence).  In each case, message-passing
+arises by minimizing a localized version of the divergence, local to each
+factor.  By examining these divergence measures, we can intuit the types of
+solution they prefer (symmetry-breaking, for example) and their suitability
+for different tasks.  Furthermore, by considering a wider variety of
+divergence measures (such as alpha-divergences), we can achieve
+different complexity and performance goals.
+<p>
+
+<a href="http://research.microsoft.com/pubs/67425/tr-2005-173.pdf">pdf</a>
+<p>
+
+The bounds in this paper have recently been extended by Liu and Ihler, in the paper <a href="http://mldiscuss.appspot.com/venue/ICML/2011/article/459/">Bounding the Partition Function using Holder's Inequality</a>.  <p>
+
+<hr>
+
+Tom Minka<br>
+AI & Statistics 2005, invited talk<br>
+Original title: <i>Some intuitions about message passing</i>
+<p>
+
+Talk slides 
+<a href="minka-message-passing-slides.pdf">pdf</a>
+<a href="minka-message-passing.ppt">ppt</a>
+<p>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Wed Dec 07 17:19:39 GMT 2005
+<!-- hhmts end -->
+</body> </html>

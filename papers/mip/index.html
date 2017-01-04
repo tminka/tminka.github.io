@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Discriminative projections</title>
+</head>
+
+<body>
+<center>
+<h1>Discriminative projections</h1>
+<h3>by <a href="http://tminka.github.io/">Tom Minka</a></h3>
+</center>
+
+A discriminative projection is a projection of high-dimensional data which
+preserves the separation of classes as much as possible.  Discriminative
+projection is useful for reducing the cost of classification and for
+visualization.  By assuming Gaussian classes, efficient methods for
+discriminative projection are possible.  
+<p>
+
+A traditional and successful approach to
+discriminative projection is the Fisher projection, which assumes the
+classes are Gaussian with the same covariance matrix.  Fisher projection
+focuses on separating the classes based on their means.
+But what if the covariances are different?  
+That is the case addressed here.
+<p>
+
+When class covariances are different, a good projection makes the projected
+variances as different as possible.  Consider this example:
+<br>
+<img src="mip2-points.png">
+<br>
+The classes both have zero mean, so the Fisher projection is undefined.
+But not all projections are equally good.  The projection axis shown
+allows the projected data to be classified with minimal misclassification
+rate.
+It also achieves the largest difference between the variances of the 
+projected classes.
+Here are the projected class densities:
+<br>
+<img src="mip2-density.png">
+<br>
+This projection was found by optimizing <kbd>v1/v2</kbd>, where
+<kbd>v1</kbd> and <kbd>v2</kbd> are the projected variances.
+The optimum is found by solving an eigenvector equation.
+<p>
+
+By using a more general projection criterion, we can also solve the case 
+where both the class means and class covariances are different.
+The objective is <kbd>va/(v1*v2)</kbd>, where <kbd>va</kbd> is the variance
+of the combined data after projection.  (If class sizes are unequal, there
+are additional constants in the objective.)
+This dataset is the same as above but with class 1 shifted:<Br>
+<img src="mip3-points.png">
+<br>
+The result is a compromise between the above projection and the Fisher
+projection.  Here are the projected class densities, designed to have
+minimal overlap both in mean and variance:
+<br><img src="mip3-density.png"><br>
+The projection in this case is found by EM algorithm which solves a series
+of eigenvector equations until a fixed points is reached (typically in four
+steps).
+<p>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Thu Jan 17 18:38:52 EST 2002
+<!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Expectation Propagation</title>
+</head>
+
+<body>
+<h1>A family of algorithms for approximate Bayesian inference</h1>
+
+Thomas Minka<br>
+MIT PhD thesis, 2001<p>
+
+One of the major obstacles to using Bayesian methods for pattern
+recognition has been its computational expense.  This thesis presents an
+approximation technique that can perform Bayesian inference faster and more
+accurately than previously possible.  This method, ``Expectation
+Propagation,'' unifies and generalizes two previous techniques:
+assumed-density filtering, an extension of the Kalman filter, and loopy
+belief propagation, an extension of belief propagation in Bayesian
+networks.  The unification shows how both of these algorithms can be viewed
+as approximating the true posterior distribution with a simpler
+distribution, which is close in the sense of KL-divergence.  Expectation
+Propagation exploits the best of both algorithms: the generality of
+assumed-density filtering and the accuracy of loopy belief propagation.
+<p>
+
+Loopy belief propagation, because it propagates exact belief states, is
+useful for limited types of belief networks, such as purely discrete
+networks.  Expectation Propagation approximates the belief states with
+expectations, such as means and variances, giving it much wider scope.
+Expectation Propagation also extends belief propagation in the opposite
+direction---propagating richer belief states which incorporate
+correlations between variables.
+<p>
+
+This framework is demonstrated in a variety of statistical models using
+synthetic and real-world data.  On Gaussian mixture problems, Expectation
+Propagation is found, for the same amount of computation, to be
+convincingly better than rival approximation techniques: Monte Carlo,
+Laplace's method, and variational Bayes.  For pattern recognition,
+Expectation Propagation provides an algorithm for training Bayes Point
+Machine classifiers that is faster and more accurate than any previously
+known.  The resulting classifiers outperform Support Vector Machines on
+several standard datasets, in addition to having a comparable training
+time.  Expectation Propagation can also be used to choose an appropriate
+feature set for classification, via Bayesian model selection.
+<p>
+
+<a href="minka-thesis.ps.gz">Postscript</a> (440K)
+.
+<a href="minka-thesis.pdf">PDF</a> (990K)
+<p>
+
+The slides from my defense are also available:
+<a href="defense.pdf">PDF</a>
+(574K)
+<p>
+
+I'm providing a <a href="https://github.com/tminka/bpm">matlab toolbox</a> for classification with the Bayes Point Machine.
+<p>
+
+<hr>
+<h1>Expectation Propagation for approximate Bayesian inference</h1>
+
+Thomas Minka<br>
+UAI'2001, pp. 362-369
+<p>
+
+This is a short version of the above thesis.  It includes the free-energy
+formulation of EP.
+<p>
+
+This PDF contains a correction to the published version, in the updates for
+for the Bayes Point Machine.  This doesn't affect the experimental
+results because epsilon was 0, however it does make a difference for
+epsilon > 0.  Thanks to Yuan Qi for finding this.
+<p>
+
+<a href="minka-ep-uai.pdf">PDF</a> (213K)
+(Doubly-corrected version, 1/30/04)
+<p>
+
+The slides from my UAI talk are also available, in two parts:
+<a href="minka-ep-uai-slides1.pdf">part 1</a>
+.
+<a href="minka-ep-uai-slides2.pdf">part 2</a>
+
+<hr>
+<h2>The EP energy function and minimization schemes</h2>
+
+This is a short note which discusses the EP energy function in more detail
+than I could include in the UAI paper:<br>
+<a href="minka-ep-energy.pdf">PDF</a>
+(62K)
+
+<hr>
+<h2><a href="roadmap.html">A roadmap to research on EP</a></h2>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Wed Aug 17 18:09:51 GMT 2005
+<!-- hhmts end -->
+</body> </html>

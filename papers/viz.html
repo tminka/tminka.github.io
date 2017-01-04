@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Building statistical models by visualization</title>
+</head>
+
+<body>
+<h1>Building statistical models by visualization</h1>
+
+Thomas P. Minka<br>
+(5/28/03)
+<p>
+
+Practical applications of statistical methods usually involve
+assumptions about the domain, such as independence, normality,
+linearity, and the choice of variables.  I will describe a set of
+graphical tools which simplify the process of learning about a domain
+and checking model assumptions.  Some of these tools have been around
+for years, but vastly underused by statistical learning researchers.
+Using real-world examples, I will illustrate how visualization can be
+used for model selection, identifying exceptional cases, and
+interpreting the results of learning algorithms.
+<p>
+
+Talk slides, <a href="minka-viz-talk.pdf">pdf</a>
+(221K)
+<p>
+
+Also see my page on <a href="mip/">Discriminative projections</a>
+and the class materials on my main page.
+<p>
+
+My visualization software is available: 
+<a
+href="http://www.media.mit.edu/~tpminka/courses/36-350/lab/mining.zip">mining.zip
+(R 1.7.1)</a>
+<a
+href="http://www.media.mit.edu/~tpminka/courses/36-350/lab/mining_1.1.zip">mining_1.1.zip
+(R 1.9.1)</a>
+<br>In R for Windows, select menu option 
+<pre>
+Packages -> Install Package from local zip file...
+</pre>
+Then type
+<pre>
+library(mining)
+help(package=mining)
+</pre>
+<p>
+
+These packages only work with the version of R listed.  Under Windows Vista, R has trouble unzipping packages.  In this case, you need to manually unzip the package into the R/library directory.
+<p>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Wed Apr 26 12:39:31 GMT 2006
+<!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,362 @@
+<field ep=E>
+<field year="2015">
+<a href="http://sms.cam.ac.uk/media/2132075">An introduction to Expectation Propagation (video lecture)</a> <a href="http://www.turing-gateway.cam.ac.uk/documents/uqm_2015/Tom_Minka-Presentation.pdf">(slides)</a>
+
+<field ep=E>
+<field year="2014">
+<a href="http://stanford.edu/~rezab/nips2014workshop/submits/distbayes.pdf">Elastic Distributed Bayesian Collaborative Filtering</a>
+
+<field bayesian=B>
+<field year="2014">
+<a href="http://papers.nips.cc/paper/5449-a-sampling">A* Sampling</a>
+
+<field bayesian=B>
+<field year="2014">
+<a href="http://www.cs.toronto.edu/~dtarlow/NCAAF.pdf">Knowing what we don't know in NCAA Football ratings: Understanding and using structured uncertainty</a>
+
+<field modeling=M>
+<field year="2013">
+<a href="http://arxiv.org/abs/1312.5386">Detecting Parameter Symmetries in Probabilistic Models</a>
+
+<field bayesian=B>
+<field year="2012">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=164692">A Bayesian Graphical Model for Adaptive Crowdsourcing and Aptitude Testing</a>
+
+<field bayesian=B>
+<field year="2012">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=160806">Spot Localization using PHY Layer Information</a>
+
+<field bayesian=B>
+<field year="2011">
+<a href="http://research.microsoft.com/apps/pubs/?id=194693">Non-conjugate Variational Message Passing for Multinomial and Binary Regression</a>
+
+<field ep=E>
+<field year="2010">
+<a href="http://www.microsoft.com/en-us/research/publication/sparse-posterior-gaussian-processes-for-general-likelihoods/">Sparse-posterior Gaussian Processes for general likelihoods</a>
+
+<field doc=T bayesian=B modeling=M>
+<field year="2010">
+<a href="http://research.microsoft.com/apps/pubs/?id=119092">A Novel Click Model and Its Applications to Online Advertising</a>
+
+<field modeling=M>
+<field year="2009">
+<a href="mlss2009/">Probabilistic Programming with Infer.NET</a>
+
+<field ep=E>
+<field year="2009">
+<a href="http://videolectures.net/mlss09uk_minka_ai/">Video lectures on Approximate Inference</a>
+
+<field bayesian=B>
+<field year="2009">
+<a href="imps2009/">Automating variational inference for statistics and data mining</a>
+
+<field ep=E>
+<field year="2009">
+<a href="http://arxiv.org/abs/1205.2623">Virtual Vector Machine for Bayesian Online Classification</a>
+
+<field doc=T bayesian=B modeling=M>
+<field year="2009">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=79639">Click Chain Model in Web Search</a>
+
+<field ep=E modeling=M>
+<field year="2008">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=78856">Gates: A graphical notation for mixture models</a>
+
+<field doc=T>
+<field year="2008">
+<a href="minka-letor-datasets.pdf">Selection bias in the LETOR datasets</a>
+
+<field vision=V bayesian=B>
+<field year="2008">
+<a href="https://www.microsoft.com/en-us/research/publication/bayesian-color-constancy-revisited/">Bayesian Color Constancy Revisited</a>
+
+<field doc=T>
+<field year="2008">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=63585">SoftRank: Optimising Non-Smooth Ranking Metrics</a>
+
+<field ep=E bayesian=B>
+<field year="2007">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=74417">TrueSkill Through Time: Revisiting the History of Chess</a>
+
+<field doc=T modeling=M>
+<field year="2007">
+<a href="http://www.cs.cmu.edu/~nmramesh/sd_tc.pdf">The Smoothed Dirichlet distribution: A new building block for generative topical models</a>
+
+<field ep=E bayesian=B>
+<field year="2006">
+<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=67956">TrueSkill: A Bayesian Skill Rating System</a>
+
+<field opt=O>
+<field year="2006">
+<a href="https://www.microsoft.com/en-us/research/publication/local-training-and-belief-propagation/">Local Training and Belief Propagation</a>
+
+<field ep=E>
+<field year="2006">
+<a href="http://people.csail.mit.edu/alanqi/papers/Qi_Minka_Dynamic_EP_Signal_Detection_Preprint.pdf">Window-based expectation propagation for adaptive signal detection in flat-fading channels</a>
+
+<field vision=V bayesian=B opt=O>
+<field year="2006">
+<a href="https://www.microsoft.com/en-us/research/publication/cosegmenting-image-pairs-by-matching-global-histograms/">Cosegmentation of Image Pairs by Histogram Matching - Incorporating a Global Constraint into MRFs</a>
+
+<field vision=V>
+<field modeling=M>
+<field year="2006">
+<a href="https://www.microsoft.com/en-us/research/publication/principled-hybrids-of-generative-and-discriminative-models/">Principled Hybrids of Generative and Discriminative Models</a>
+
+<field modeling=M>
+<field year="2005">
+<a href="https://www.microsoft.com/en-us/research/publication/discriminative-models-not-discriminative-training/">Discriminative models, not discriminative training</a>
+
+<field vision=V bayesian=B>
+<field year="2005">
+<field comment="A Bayesian version of agglomerative information bottleneck.">
+<a href="Winn-VisualDictionary.pdf">Object Categorization by Learned Universal Visual Dictionary</a>
+
+<field ep=E>
+<field year="2005">
+<a href="srg/">Structured Region Graphs: Morphing EP into GBP</a>
+
+<field ep=E>
+<field year="2005">
+<a href="message-passing/">Divergence measures and message passing</a>
+
+<field ep=E bayesian=B>
+<field year="2005">
+<a href="bcrf/">Bayesian Conditional Random Fields</a>
+
+<field ep=E>
+<field year="2004">
+<a href="https://www.microsoft.com/en-us/research/publication/power-ep/">Power EP</a>
+
+<field ep=E>
+<field year="2004">
+<a href="ep/roadmap.html">A roadmap to research on EP</a>
+
+<field ep=E bayesian=B>
+<field year="2004">
+<field comment="Preventing overfitting in ARD.">
+<a href="http://www.cs.purdue.edu/homes/alanqi/papers/qi-minka-picard-ghahramani-ICML-04.pdf">Predictive Automatic
+Relevance Determination by Expectation Propagation</a>
+
+<field modeling=M vision=V>
+<field year="2004">
+<field comment="How to properly normalize distributions over image features.">
+<a href="https://www.microsoft.com/en-us/research/publication/exemplar-based-likelihoods-using-the-pdf-projection-theorem/">Exemplar-based likelihoods using the PDF projection theorem</a>
+
+<field modeling=M vision=V doc=T>
+<field year="2003">
+<field comment="An explanation of a common trick used in computer vision and text retrieval.">
+<a href="minka-summation.pdf">The `summation hack' as an outlier model</a>
+
+<field ep=E>
+<field year="2003">
+<a href="eptree/">Tree-structured approximations by expectation
+propagation</a>
+
+<field ep=E>
+<field year="2003">
+<a href="infinite/">Expectation Propagation for Infinite
+Mixtures</a>
+
+<field vision=V bayesian=B>
+<field year=2003>
+<a href="http://www-2.cs.cmu.edu/~chuck/nips-2003/">Bayesian Color
+Constancy with Non-Gaussian Models</a>
+
+<field ep=E>
+<field year="2003">
+<a href="http://vismod.media.mit.edu/tech-reports/TR-555-ABSTRACT.html">Expectation Propagation for Signal Detection in Flat-fading Channels</a>
+
+<field modeling=M>
+<field year="2003">
+<a href="viz.html">Building statistical models by visualization</a>
+
+<field modeling=M>
+<field year=2003>
+<a href="http://ba.stat.cmu.edu/journal/2006/vol01/issue02/kadane363-374.pdf">Conjugate Analysis of the Conway-Maxwell-Poisson Distribution</a>
+
+<field modeling=M>
+<field year=2003>
+<a href="http://www.ingentaconnect.com/content/bpl/rssc/2005/00000054/00000001/art00009">A Useful Distribution for Fitting Discrete Data: Revival of the COM-Poisson</a>
+
+<field modeling=M>
+<field year=2003>
+<a href="http://www.stat.cmu.edu/tr/tr776/tr776.html">Computing with the COM-Poisson distribution</a>
+
+<field opt=O>
+<field year=2002>
+<a href="minka-gamma.pdf">Estimating a Gamma distribution</a>
+
+<field bayesian=B>
+<field year="2002">
+<a href="qi-minka-HMH-AMIT-02.pdf">Hessian-based Markov Chain Monte-Carlo Algorithms</a>
+
+<field ep=E bayesian=B>
+<field year="2002">
+<a href="dynamic.html">Bayesian inference in dynamic models -- an overview</a>
+
+<field modeling=M>
+<field year="2002">
+<field comment="Something everyone should know how to do, but probably doesn't.">
+<a href="minka-errorbars.pdf">Judging significance from error bars</a>
+
+<field bayesian=B>
+<field year="2002">
+<a href="http://www.cs.purdue.edu/homes/alanqi/papers/qi-spec-02.pdf">Bayesian Spectrum
+Estimation of Unevenly Sampled Nonstationary Data</a>
+
+<field doc=T>
+<field year=2002>
+<a href="http://www-2.cs.cmu.edu/~yiz/research.htm">Novelty and Redundancy Detection in Adaptive Filtering</a>
+
+<field ep=E doc=T>
+<field year="2002">
+<a href="aspect/">Expectation-Propagation for the Generative Aspect Model</a>
+
+<field opt=O>
+<field year="2003">
+<field comment="Derives and compares eight methods, including iterative scaling.">
+<a href="logreg/">A comparison of numerical optimizers for logistic regression</a>
+
+<field ep=E>
+<field year="2001">
+<a href="ep/minka-ep-energy.pdf">The EP energy function and minimization schemes</a>
+
+<field ep=E>
+<field year="2001">
+<field comment="UAI version of my thesis, with some extra results.">
+<a href="ep/">Expectation Propagation for approximate Bayesian inference</a>
+
+<field ep=E>
+<field year="2001">
+<field comment="(PhD thesis work) A powerful generalization of belief propagation.">
+<a href="ep/">A family of algorithms for approximate Bayesian inference</a>
+
+<field bayesian=B>
+<field year="2001">
+<field comment="A new interpretation and generalization of Variational Bayes.">
+<a href="rem.html">Using lower bounds to approximate integrals</a>
+
+<field opt=O>
+<field year="2000">
+<field comment="Custom approximations for fast optimization.">
+<a href="newton.html">Beyond Newton's method</a>
+
+<field opt=O>
+<field year="2000">
+<field comment="Optimization using Newton, modified Newton, and lower
+bounds.">
+<a href="dirichlet/">Estimating a Dirichlet distribution</a>
+
+<field bayesian=B>
+<field year="2000">
+<a
+href="pca/">Automatic choice of dimensionality for PCA</a>
+
+<field bayesian=B>
+<field year="2000">
+<a href="http://www.media.mit.edu/~tpminka/statlearn/demo/">Bayesian model selection</a>
+
+<field bayesian=B>
+<field year="2000">
+<a href="quadrature.html">Deriving quadrature rules from Gaussian processes</a>
+
+<field bayesian=B>
+<field year="2000">
+<a href="metric/">Distance measures as prior probabilities</a>
+
+<field bayesian=B>
+<field year=2000>
+<a href="bma.html">Bayesian model averaging is not model combination</a>
+
+<field bayesian=B>
+<field year=2000>
+<a href="erm.html">Empirical Risk Minimization is an incomplete inductive principle</a>
+
+<field modeling=M>
+<field year="1999">
+<a href="point-sets.html">Learning How to Learn is Learning With Point Sets</a>
+
+<field bayesian=B>
+<field year="1999">
+<field comment="Total least squares is not optimal.">
+<a href="eiv.html">Linear regression with errors in both variables:
+A proper Bayesian approach</a>
+
+<field modeling=M>
+<field year="1999">
+<field comment="The next time you use a Dirichlet, consider a Dirichlet-tree instead.">
+<a href="dirichlet/minka-dirtree.pdf">The Dirichlet-tree
+distribution</a>
+
+<field vision=V>
+<field year=2001>
+<a
+href="ocr.html">
+Document image decoding using iterated complete path search</a>
+
+<field modeling=M>
+<field year="1998">
+<a href="http://vismod.media.mit.edu/tech-reports/TR-531-ABSTRACT.html">From Hidden Markov Models to Linear Dynamical Systems</a>
+
+<field bayesian=B>
+<field year="1998">
+<field comment="How empirical entropy and empirical mutual information can arise in Bayesian inference.">
+<a href="multinomial.html">Bayesian inference, entropy, and the multinomial distribution</a>
+
+<field opt=O>
+<field year="1998">
+<a href="em.html">Expectation-Maximization as lower bound maximization</a>
+
+<field bayesian=B>
+<field year=1998>
+<a href="linear.html">Bayesian linear regression</a>
+
+<field bayesian=B>
+<field year=1998>
+<field comment="Bayesian methods succeed where maximum-likelihood does not.">
+<a href="uniform.html">Bayesian inference of a uniform distribution</a>
+
+<field bayesian=B>
+<field year=1998>
+<field comment="Bayes provides a new approach to this age-old problem.">
+<a href="gaussian.html">Inferring a Gaussian distribution</a>
+
+<field modeling=M>
+<field year=1998>
+<field comment="A summary of Bayesian network notation.">
+<a href="diagrams.html">Independence Diagrams</a>
+
+<field bayesian=B>
+<field year=1998>
+<a href="pathologies.html">Pathologies of Orthodox Statistics</a>
+
+<field modeling=M>
+<field year="1998">
+<a href="nuances.html">Nuances of probability
+theory</a>
+
+<field bayesian=B vision=V>
+<field year="1998">
+<a href="http://www.media.mit.edu/~tpminka/pichunter/">An Optimized Interaction Strategy for Bayesian Relevance Feedback</a>
+
+<field modeling=M>
+<field year="1997">
+<a href="matrix/">Old and New Matrix Algebra Useful for Statistics</a>
+
+<field vision=V>
+<field year=1996>
+<a href="http://vismod.media.mit.edu/tech-reports/TR-382-ABSTRACT.html">Modeling user subjectivity in image libraries</a>
+
+<field vision=V>
+<field year=1996>
+<a href="http://vismod.media.mit.edu/tech-reports/TR-365-ABSTRACT.html">An Image Database Browser that Learns from User Interaction</a>
+
+<field vision=V>
+<field year=1997>
+<a href="http://vismod.media.mit.edu/tech-reports/TR-349-ABSTRACT.html">Interactive Learning using a "Society of Models"</a>
+
+<field vision=V>
+<field year=1995>
+<a href="http://pubs.media.mit.edu/?section=docdetail&id=215948&collection=Media+Lab&filtercollection=Media+Lab">Vision Texture for Annotation</a>
+

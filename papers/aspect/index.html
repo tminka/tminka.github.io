@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Expectation-Propagation for the Generative Aspect Model</title>
+</head>
+
+<body>
+<h1>Expectation-Propagation for the Generative Aspect Model</h1>
+
+Thomas Minka and John Lafferty<br>
+Proceedings of the 
+18th Conference on Uncertainty in Artificial
+Intelligence, pp. 352-359<br>
+2002<br>
+<p>
+
+The generative aspect model is an extension of the multinomial model for
+text that allows word probabilities to vary stochastically across
+documents.  Previous results with aspect models have been promising, but
+hindered by the computational difficulty of carrying out inference and
+learning.  This paper demonstrates that the simple variational methods of
+Blei et al (2001) can lead to inaccurate inferences and biased learning
+for the generative aspect model.  We develop an alternative approach that
+leads to higher accuracy at comparable cost.  An extension of
+Expectation-Propagation is used for inference and then embedded in an EM
+algorithm for learning.  Experimental results are presented for both
+synthetic and real data sets.
+<p>
+
+<a href="minka-aspect.pdf">PDF</a>
+(100K)
+<br>
+<a href="minka-aspect-talk.pdf">Talk
+slides</a> (425K)
+<p>
+
+Also check out some <a href="demo.html">comparisons of VB and EP</a>.
+<p>
+
+Tomonari Masada has written up some <a href="http://www.cis.nagasaki-u.ac.jp/~masada/2012121001.pdf">derivations</a> of the equations in this paper.
+<p>
+
+<h3>Software</h3>
+
+A Matlab implementation of VB and EP is available:
+<a href="minka-aspect.zip">minka-aspect.zip</a>
+<br>
+It requires <a
+href="https://github.com/tminka/lightspeed/">lightspeed</a> and <a
+href="https://github.com/tminka/fastfit/">fastfit</a>, so install these first.
+<p>
+
+<hr>
+<address><a href="/">Thomas P Minka</a></address>
+<!-- hhmts start -->
+Last modified: Thu Mar 22 14:49:03 GMT 2007
+<!-- hhmts end -->
+</body> </html>

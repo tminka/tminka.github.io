@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Bayesian Conditional Random Fields</title>
+</head>
+
+<body>
+<h1>Bayesian Conditional Random Fields</h1>
+
+Yuan (Alan) Qi, Martin Szummer, Thomas P. Minka
+<br>
+<a href="http://www.gatsby.ucl.ac.uk/aistats/">Tenth International Workshop on 
+Artificial Intelligence and Statistics (AISTATS), 2005</a>
+<p>
+
+We propose Bayesian Conditional Random Fields (BCRFs) for classifying
+interdependent and structured data, such as sequences, images or webs.
+BCRFs are a Bayesian approach to training and inference with conditional
+random fields, which were previously trained by maximizing likelihood (ML)
+(Lafferty et al., 2001).  Our framework eliminates the problem of
+overfitting, and offers the full advantages of a Bayesian treatment.
+Unlike the ML approach, we estimate the posterior distribution of the model
+parameters during training, and average over this posterior during
+inference.  We apply an extension of EP method, the power EP method, to
+incorporate the partition function. For algorithmic stability and accuracy,
+we flatten the approximation structures to avoid two-level approximations.
+We demonstrate the superior prediction accuracy of BCRFs over conditional
+random fields trained with ML or MAP on synthetic and real
+datasets.
+<p>
+
+<a href="Qi-Bayesian-CRF-AIstat05.pdf">paper</a>
+.
+<a href="minka-bcrf-talk.ppt">talk</a>
+.
+<a href="minka-bcrf-slides4.pdf">slides</a>
+<p>
+
+<hr>
+<h1>Diagram Structure Recognition by Bayesian Conditional Random Fields</h1>
+
+Yuan (Alan) Qi, Martin Szummer, Thomas P. Minka
+<br>
+<a href="http://www.cs.duke.edu/cvpr2005/">IEEE International Conference on
+Computer Vision and Pattern Recognition
+(CVPR), 2005</a>
+<p>
+
+      Hand-drawn diagrams present a complex recognition problem.  Elements
+      of the diagram are often individually ambiguous, and require context
+      to be interpreted.
+
+      We present a recognition method based on Bayesian conditional random
+      fields (BCRFs) that jointly analyzes all drawing elements in order to
+      incorporate contextual cues. The classification of each object
+      affects the classification of its neighbors. BCRFs allow flexible and
+      correlated features, and take both spatial and temporal information
+      into account.  BCRFs estimate the posterior distribution of
+      parameters during training, and average predictions over the
+      posterior for testing. As a result of model averaging, BCRFs avoid
+      the overfitting problems associated with maximum likelihood
+      training. We also incorporate Automatic Relevance Determination
+      (ARD), a Bayesian feature selection technique, into BCRFs.  The
+      result is significantly lower error rates compared to ML- and
+      MAP-trained CRFs.
+<p>
+
+<a href="BCRF-CVPR05.pdf">paper</a>
+
+<hr>
+<address><a href="/">Tom Minka</a></address>
+<!-- hhmts start -->
+Last modified: Thu Apr 07 13:42:23 GMT 2005
+<!-- hhmts end -->
+</body> </html>

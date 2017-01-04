@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Variational bounds via reversing EM</title>
+</head>
+
+<body>
+<h1>Variational bounds via reversing EM</h1>
+Thomas P. Minka<br>
+Talk given at JPRC 8/26/99
+<p>
+
+Variational bounds have proven to be a simple and efficient way to
+approximate integrals in statistical models.  The EM algorithm can be
+viewed as a variational bounding method, but for maximization instead
+of integration.  I extend this equivalence by showing that any EM
+algorithm for maximization can be "reversed" to yield a variational
+method for integration.  Virtually all existing variational learning
+and ensemble learning algorithms can be interpreted in this way.
+Furthermore, the quality of the integrator is directly related to the
+convergence rate of the EM algorithm it came from.  This perspective
+allows us to leverage recent advances in "fast EM" to get better
+integration algorithms.
+<p>
+
+For example, Pilla & Lindsay have recently proposed a fast EM
+algorithm for fitting mixture weights.  I demonstrate how this
+algorithm can be reversed to marginalize out the weights in a mixture,
+which is useful for promoting simpler mixtures.  I compare reverse EM
+to various incarnations of Laplace's method on this problem.
+<p>
+
+<a
+href="rem_talk.ps.gz">Postscript slides</a> (85K)
+<p>
+
+Also see the paper <a href="rem.html">"Variational Bayes for mixture
+models: Reversing EM"</a>.
+
+<hr>
+<!-- hhmts start -->
+Last modified: Fri Dec 10 14:24:36 GMT 2004
+<!-- hhmts end -->
+</body> </html>

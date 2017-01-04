@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Using lower bounds to approximate integrals</title>
+</head>
+
+<body>
+<h1>Using lower bounds to approximate integrals</h1>
+
+Thomas Minka<br>
+2001 (revised 2015)<p>
+
+Variational lower bounds are a simple and efficient way to approximate
+Bayesian integrals.  By bounding the integrand at every point, we obtain a
+bound on the integral value.  Variational Bayes (Attias 1999) and convex
+duality methods (Jaakkola 1999a,b) are of this type, and---as shown in this
+paper---so is the approximation method of Cheeseman &amp; Stutz (1996).  In
+each case, EM is used to maximize the bound.  The EM updates are derived
+for Gaussian mixtures and multinomial mixtures with conjugate priors.
+Experimental results show the lower bound method to be less accurate than
+Laplace's method, but often simpler.
+<p>
+
+Also see the talk <a href="rem-talk.html">"Variational bounds via reversing
+EM"</a>.
+<p>
+
+<a href="minka-rem-tut.pdf">PDF</a> . <a href="minka-rem-code.zip">Code</a>
+
+</body> </html>

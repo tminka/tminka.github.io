@@ -1,0 +1,470 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Bayesian inference in dynamic models -- an overview</title>
+</head>
+
+<body>
+<h1><center>Bayesian inference in dynamic models -- an overview</center></h1>
+<h3><center>by <a href="https://tminka.github.io/">Tom Minka</a></center></h3>
+
+<p> The following algorithms all try to infer the hidden state of a dynamic
+model from measurements.  The input is a dynamic model and a measurement
+sequence and the output is an approximate posterior distribution over the
+hidden state at one or many times.  Only discrete-time models are discussed
+here.  <p>
+
+Inferring only the most recent hidden state is known as <b>filtering</b>;
+inferring past states is known as <b>smoothing</b>.
+Most filtering methods are <b>on-line</b>, which means they 
+process each measurement exactly once, after which it can be discarded.
+This allows them to operate with a fixed amount of memory.
+The opposite of <b>on-line</b> is <b>off-line</b> or <b>batch</b>.
+There are standard ways to turn an on-line filtering algorithm into a 
+batch filtering or smoothing algorithm.
+Therefore, the overview is divided into two parts: on-line filtering and
+batch filtering/smoothing.
+<p>
+
+Some of these algorithms are general algorithms for approximate Bayesian
+inference and others are specialized for dynamic models.  With the
+description of each algorithm is a partial list of references.  I've
+included more references for algorithms which are less
+well-known.  <p>
+
+Some related pages on the web:
+<ul>
+<li><a href="http://www.cs.berkeley.edu/~murphyk/Bayes/kalman.html">Kevin
+Murphy's Kalman filter toolbox</a>
+</ul>
+
+<hr>
+<h2>On-line filtering algorithms</h2>
+
+The algorithms are grouped according to how they represent the posterior
+distribution over the hidden state (their <b>belief</b>).
+
+<hr>
+<h2>Gaussian belief</h2>
+
+The following algorithms use a multivariate Gaussian for their belief.  In
+fact, most of them are more general than this---they could use any
+exponential family as their belief.
+<p>
+
+<dl>
+<dt><b>Kalman filter</b>
+<dd>The Kalman filter only applies to models with Gaussian noise, linear
+state equations, and linear measurement equations, i.e.
+<pre>
+s_t = A s_(t-1) + noise
+x_t = C s_t + noise
+</pre>
+For these models the state posterior really is Gaussian, and the Kalman
+filter is exact.
+<ul>
+<li>
+<a href="http://www.cs.unc.edu/~welch/kalman/">The Kalman filter</a>
+<li>
+<a
+href="http://vismod.media.mit.edu/tech-reports/TR-531-ABSTRACT.html">"From
+Hidden Markov Models to Linear Dynamical Systems"</a>, T. Minka, 1998
+</ul>
+</dd><p>
+
+<dt><b>Extended Kalman filter</b>
+<dd>The Extended Kalman filter applies to models with Gaussian noise.
+The state and measurement equations are linearized by a Taylor expansion
+about the current state estimate.  The noise variance in the equations is
+not changed, i.e. the additional error due to linearization is not modeled.  
+After linearization, the Kalman filter is applied.
+<ul>
+<li>"Stochastic models, estimation and control", Peter S. Maybeck,
+Volume 2, Chapter 12, 1982.
+<li>"A linear approximation method for probabilistic inference",
+Ross Shachter, UAI'1990.
+</ul>
+</dd><p>
+
+<dt><b>Bottleneck filter</b>
+<dd>This algorithm applies to any type of measurement equation.
+The measurement equation is rewritten in terms of an intermediate
+bottleneck variable <kbd>b_t</kbd>, such that <kbd>p(x_t|b_t)</kbd> is
+simple while <kbd>p(b_t|s_t)</kbd> may be complicated.  At each time step,
+the Gaussian belief on <kbd>s_t</kbd> is converted into a Gaussian belief
+on <kbd>b_t</kbd> (usually involving approximations), <kbd>b_t</kbd> is
+updated exactly from <kbd>x_t</kbd> (since <kbd>p(x_t|b_t)</kbd> is
+simple), and the new Gaussian belief on <kbd>b_t</kbd> is converted back to
+a Gaussian belief on <kbd>s_t</kbd>.  
+("Bottleneck" is my own terminology.  In the West paper below, they
+used Gamma distributions.)
+<ul>
+<li>"Dynamic Generalized Linear Models and Bayesian Forecasting,"
+M. West, P. J. Harrison, &amp; H. S. Migon, J Am Stat Assoc 80:73-97, 1985.
+</ul>
+</dd><p>
+
+<dt><b>Linear-update filter</b>
+a.k.a. linear-regression filter or "statistical linearization" filter
+<dd>
+This algorithm applies to any type of measurement equation.
+The measurement equation is converted into a linear-Gaussian equation
+by regressing the observation onto the state.
+The result is a Kalman filter whose Kalman gain is
+<kbd>cov(state,measurement)/var(measurement)</kbd>.
+Note that the regression is done without reference to the actual measurement.
+I call it "linear-update" because the update to the state is always a linear
+function of the measurement.
+A variety of approximations have been proposed when
+<kbd>cov(state,measurement)</kbd>
+is not available analytically.  The <b>unscented filter</b>,
+<b>central difference filter</b>, and <b>divided difference filter</b> are
+filters of this type.
+<ul>
+<li>"Stochastic models, estimation and control", Peter S. Maybeck,
+Volume 2, Chapter 12, 1982.
+<li><a href="http://citeseer.ist.psu.edu/457152.html">"Kalman Filters for nonlinear systems: a comparison of performance"</a>,
+Tine Lefebvre, Herman Bruyninckx, Joris De Schutter.
+<li><a href="http://www.cslu.ogi.edu/nsel/ukf/">"The Unscented Kalman Filter for Nonlinear Estimation"</a>,
+Eric A. Wan and Rudolph van der Merwe, 2000.
+</ul>
+</dd><p>
+
+<dt><b>Assumed-density filter</b> a.k.a. moment matching
+<dd>This algorithm chooses the Gaussian belief which is "closest", in some
+sense, to the exact state posterior given previous beliefs.
+Usually this amounts to matching the moments of the exact posterior.
+This is the most general approximation technique proposed to date---it
+utilizes not only the form of the measurement equation but also the
+measurement itself.  The assumed-density filter requires analytic or
+numerical solution of integrals over the measurement distribution.
+For this, one could use Monte Carlo, quadrature, or Laplace's method.
+<ul>
+<li>
+<a href="ep/">"Expectation Propagation for approximate Bayesian inference"</a>,
+T. Minka, Uncertainty in AI'2001.
+<li>"Stochastic models, estimation and control", Peter S. Maybeck,
+Volume 2, Chapter 12.7, 1982.
+<li>
+<a href="http://www.unc.edu/depts/statistics/faculty/amarjit/pdffile/Amarjit7.ps">"A nonlinear filtering algorithm based on an approximation of the conditional distribution"</a>,
+H. J. Kushner and A. S. Budhiraja, IEEE Trans Automatic Control
+45(3):580-585, 2000.
+<li>
+<a href="http://citeseer.ist.psu.edu/ito99gaussian.html">"Gaussian filters for nonlinear filtering problems"</a>,
+K. Ito and K. Q. Xiong, IEEE Trans Automatic Control 45(5): 910-927, 2000.
+<li>
+<a href="http://uai.sis.pitt.edu/displayArticleDetails.jsp?mmnu=2&smnu=2&author_id=311&article_id=212">"Approximate Learning in Complex Dynamic Bayesian Networks"</a>,
+Settimi, Smith, &amp; Gargoum, UAI'1999.
+<li>
+<a href="http://www.ucl.ac.uk/statistics/research/pdfs/135.zip">"A comparison of sequential learning methods for incomplete data"</a>,
+R. G. Cowell, A. P. Dawid, &amp; P. Sebastiani, Bayesian Statistics 5, 1996.
+<li>
+<a href="http://www.google.co.uk/search?q=%22A+Bayesian+Approach+to+On%2Dline+Learning%22">"A Bayesian Approach to On-line Learning"</a>,
+Manfred Opper, On-Line Learning in Neural Networks, 1999.
+</ul>
+</dd><p>
+
+<!-- Laplace ADF -->
+
+</dl>
+
+<h2>Mixture of Gaussian belief</h2>
+
+A natural choice in moving beyond a single Gaussian is to use a mixture of
+Gaussian belief.  Unfortunately, an algorithm for general dynamic
+models has proven elusive.  Instead, existing algorithms assume that the
+dynamic model is a mixture of linear-Gaussian models, i.e. it switches
+randomly between different linear-Gaussian state/measurement equations.
+This can be understood as having discrete state variables in addition to
+the continuous ones.
+For these models, the true state posterior is a mixture of Gaussians, but a
+very big one.  The algorithms focus on reducing the size of this mixture,
+in an on-line way.
+Most of them generalize beyond Gaussian to any exponential family.
+<p>
+
+<dl>
+<dt><b>Assumed-density filter</b> 
+a.k.a. "pseudo-Bayes"
+<dd>Same as assumed-density filtering for a single Gaussian, but now the
+belief representation is categorical for the discrete state component and
+conditional Gaussian for the continuous state component, producing a
+mixture of Gaussian marginal for the continuous state component.  For each
+setting of the discrete state component, this algorithm chooses the
+Gaussian which is "closest" to the exact state posterior given previous
+beliefs.  A drawback of this algorithm is that the size of the mixture is
+predetermined by the cardinality of the discrete state component.  However,
+it does allow the state/measurement equations, conditional on the discrete
+state, to be non-Gaussian.
+<ul>
+<li><a
+href="http://www.cs.berkeley.edu/~murphyk/Papers/skf.ps.gz">"Switching
+Kalman filters"</a>, Kevin Murphy, 1998.
+<li>"Bayesian forecasting",
+P. J. Harrison and C. F. Stevens,  J Royal Stat Soc B 38:205--247, 1976.
+<li>
+<a
+href="http://www.cs.ru.nl/~tomh/publications/publications.html">"Expectation
+propagation for approximate inference in dynamic Bayesian networks"</a>,
+Tom Heskes and Onno Zoeter, Uncertainty in AI'2002.
+</ul>
+</dd><p>
+
+<dt><b>Gaussian-sum filter</b>
+<dd>This is a family of algorithms which propagate the exact posterior for
+one step, giving a large Gaussian mixture, and then reduce the mixture
+as needed.  Methods for reducing the mixture include:
+<dl>
+<dt>Drop mixture components with low weight
+<dd>
+<ul>
+<li>
+<a href="http://www.ucl.ac.uk/statistics/research/pdfs/135.zip">"A comparison of sequential learning methods for incomplete data"</a>,
+R. G. Cowell, A. P. Dawid, &amp; P. Sebastiani, Bayesian Statistics 5, 1996.
+<li>Tugnait, Automatica 18: 607--615, 1982
+<li>Smith & Winter, IEEE Conf Decision & Control, 1979 
+</ul>
+
+<dt>Sample mixture components according to weight
+<dd>Used in Rao-Blackwellised particle filters:
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/chen00mixture.html">"Mixture Kalman Filters"</a>, Chen and Liu
+<li>
+<a href="http://www.stats.ox.ac.uk/pub/clifford/Particle_Filters/jj.Abstract.html">"Building Robust Simulation-based Filters for Evolving Data Sets"</a>,
+J. Carpenter, P. Clifford, &amp; and P. Fearnhead
+</ul>
+
+<dt>Repeatedly merge most similar pair of mixture components
+<dd>
+<ul>
+<li>
+"The two-filter formula for smoothing and an implementation of the
+Gaussian-sum smoother",
+G. Kitagawa, Annals Institute of Statistical Mathematics 46(4):605-623, 1994
+<li>
+<a href="http://www.google.com/search?q=&quot;Bayesian Fault Detection and Diagnosis in Dynamic Systems&quot;">"Bayesian Fault Detection and Diagnosis in Dynamic Systems"</a>,
+U. Lerner, R. Parr, D. Koller, &amp; G. Biswas
+</ul>
+
+<!-- 
+<dt>Merge mixture components by EM
+<dd>
+-->
+
+<dt>Minimize divergence between the large and small mixture 
+by nonlinear optimization
+<dd>
+<ul>
+<li>
+"Sequential methods for mixture models"
+M. Stephens, chapter 5
+in 
+<a href="http://www.stat.washington.edu/stephens/papers/tabstract.html">"Bayesian Methods for Mixtures of Normal Distributions"</a>, 1997
+</ul>
+</dl>
+</dd><p>
+
+</dl>
+
+<h2>Nonparametric belief</h2>
+
+<dl>
+<dt><b>Histogram filter</b>
+<dd>Quantize the state space and represent the belief by a histogram.
+The filtering equations then match a hidden Markov model.
+<ul>
+<li>
+"A general filter for measurements with any probability distribution",
+Y. Rosenberg and M. Werman, CVPR'97, 654--659.
+<li>
+"Non-Gaussian state-space modeling of nonstationary time series",
+G. Kitagawa, J Am Stat Assoc 82:1032--1063, 1987.
+<li>
+"Recursive Bayesian estimation using piecewise constant approximations",
+Kramer and Sorenson, Automatica 24(6):789--801, 1988.
+</ul>
+</dd><p>
+
+<dt><b>Particle filter</b>
+<dd>
+Represent the state posterior by a large set of samples drawn from the
+distribution.  The particles are updated on-line to always represent the
+current state posterior.
+The most common way to do this is to pick a particle for the previous
+state, sample a particle for the current state using the state equation, 
+and weight the particle by the probability of the measurement.
+Sample the particles according to weight to get a set of unweighted
+particles.
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/42189.html">"Sequential Monte Carlo methods for Dynamic Systems"</a>,
+Liu and Chen, JASA 93, 1998.
+<li>
+<a href="http://www-sigproc.eng.cam.ac.uk/smc/">Sequential Monte Carlo
+methods homepage</a>
+<li>
+<a href="http://citeseer.ist.psu.edu/chen00mixture.html">"Mixture Kalman Filters"</a>
+</ul>
+</dd><p>
+
+<dt><b>Particle filter with interpolation</b>
+<dd>
+A particle filter where you increase diversity by fitting a density to
+the particles and resampling from that density.
+<ul>
+<li>
+"A hybrid bootstrap filter for target tracking in clutter",
+N. Gordon,
+IEEE Trans Aerospace Electronic Systems 33:353-358, 1997.
+<li>
+<a href="http://citeseer.ist.psu.edu/504843.html">"A Tutorial on Particle Filters for On-line Non-linear/Non-Gaussian
+Bayesian Tracking"</a> (page 11)
+<li>
+<a href="http://www.google.com/search?q=&quot;Using learning for approximation in stochastic processes&quot;">"Using learning for approximation in stochastic processes"</a>
+<li>
+<a href="http://citeseer.ist.psu.edu/peshkin02factored.html">"Factored Particles for Scalable Monitoring"</a>
+</ul>
+</dd><p>
+
+<dt><b>Particle filter with MCMC steps</b>
+<dd>
+A particle filter where you increase diversity by including MCMC steps.
+<ul>
+<li>
+"Following a moving target---Bayesian inference for dynamic Bayesian models"
+W. Gilks and C. Berzuini, J Royal Stat Soc B 63(1):127--146, 2001.
+<li>
+<a href="http://citeseer.ist.psu.edu/doucet99particle.html">"Particle filters for state estimation of jump Markov linear systems"</a>
+<li>
+"Sequential importance sampling for nonparametric Bayes models: 
+The next generation", 
+S. N. MacEachern, M. Clyde, J. S. Liu, 
+Canadian J of Statistics 27(2):251-267, 1999. 
+</ul>
+</dd><p>
+
+<dt><b>MCMC filtering</b>
+<dd>MCMC can be specially designed to provide efficient, bounded-memory 
+filtering, for example via randomized Gibbs sampling.
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/marthi02decayed.html">"Decayed MCMC Filtering"</a>
+</ul>
+</dd><p>
+
+</dl>
+
+<hr>
+<h2>Batch filtering/smoothing algorithms</h2>
+
+<dl>
+<dt><b>Kalman smoothing</b>
+<dd>Used with the Kalman filter, or any filter which linearizes the
+state equations, e.g. EKF, UF, LUF, ADF.
+<ul>
+<li>
+<a href="http://www.cs.unc.edu/~welch/kalman/">The Kalman filter</a>
+<li>
+<a
+href="http://vismod.media.mit.edu/tech-reports/TR-531-ABSTRACT.html">"From
+Hidden Markov Models to Linear Dynamical Systems"</a>, T. Minka, 1998
+</ul>
+</dd><p>
+
+<dt><b>Expectation Propagation</b>
+<dd>Provides batch filtering and smoothing.
+Can be used with any method for linearizing the measurement equations, 
+e.g. EKF, UF, LUF, ADF.  Unlike Kalman smoothing, the measurement equations
+are re-linearized until a globally-stable solution is reached, giving
+better results.
+<ul>
+<li>
+<a href="ep/">"Expectation Propagation for approximate Bayesian inference"</a>,
+T. Minka, Uncertainty in AI'2001.
+<li>
+<a href="http://www.cs.ru.nl/~tomh/publications/publications.html">"Expectation
+propagation for approximate inference in dynamic Bayesian networks"</a>,
+Tom Heskes and Onno Zoeter, Uncertainty in AI'2002.
+</ul>
+</dd><p>
+
+<dt><b>Variational lower bounds</b>
+<dd>Provides batch filtering and smoothing.  Meshes well with parameter
+estimation.
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/beal01variational.html">"The
+Variational Kalman Smoother"</a>
+<li>
+<a href="http://citeseer.ist.psu.edu/543841.html">"Adaptive classification by variational Kalman filtering"</a>
+</ul>
+</dd><p>
+
+
+<dt><b>Two-filter smoothing</b>
+<dd>Run filtering forward and independently in reverse and combine the results.
+Useful for Gaussian-sum filters.
+<ul>
+<li>
+"The two-filter formula for smoothing and an implementation of the
+Gaussian-sum smoother",
+G. Kitagawa, Annals Institute of Statistical Mathematics 46(4):605-623, 1994
+</ul>
+</dd><p>
+
+<dt><b>Particle smoothing by sampling</b>
+<dd>Reweight and resample the particles at time <var>t</var>, 
+based on a sampled particle from time <var>t+1</var>.
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/436555.html">"Monte Carlo smoothing with application to audio signal
+enhancement"</a>,
+W. Fong, S. Godsill, A. Doucet, &amp; M. West,
+IEEE Trans. on Signal Processing, to appear, 2001.
+<li>
+"Monte Carlo filter and smoother for non-Gaussian nonlinear state
+space models", G. Kitagawa, J. of Computational and Graphical
+Statistics 5:1-25, 1996
+</ul>
+</dd><p>
+
+<dt><b>Particle smoothing by interpolation</b>
+<dd>Reweight and resample the particles 
+at time <var>t</var>, based on a fitted density to the particles at time
+<var>t+1</var>.
+<ul>
+<li>
+<a href="http://www.google.com/search?q=&quot;A General Algorithm for Approximate Inference and its Application to Hybrid Bayes Nets&quot;">"A General Algorithm for Approximate Inference and its
+Application to Hybrid Bayes Nets"</a>
+<li>
+<a href="http://www.cs.cmu.edu/~thrun/papers/thrun.mchmm.html">"Monte Carlo Hidden Markov Models"</a>
+</ul>
+</dd><p>
+
+<dt><b>MCMC</b>
+<dd>Gibbs sampling or Metropolis-Hastings.
+<ul>
+<li>
+<a href="http://citeseer.ist.psu.edu/godsill00monte.html">"Monte Carlo smoothing for non-linear time series"</a>
+<li>
+<a href="ftp://ftp.stat.duke.edu/pub/WorkingPapers/95-22.ps">"Bayesian forecasting of multinomial time series through conditionally Gaussian dynamic models"</a>,
+C. Cargnoni and P. Mueller and M. West, J. Amer Stat Assoc 92:587--606, 1997.
+<li>
+<a href="http://ht.econ.kobe-u.ac.jp/~tanizaki/cv/cv-e.htm">"Bayesian Estimation of State-Space Model Using the
+Metropolis-Hastings Algorithm within Gibbs Sampling"</a>,
+Geweke and Tanizaki, 
+Computational Statistics and Data Analysis 37(2):151-170, 2001.
+</ul>
+</dd><p>
+
+<dt>Markov Random Field algorithms
+<dd>Relaxation, etc.
+</dd><p>
+
+</dl>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Thu Mar 22 14:48:18 GMT 2007
+<!-- hhmts end -->
+</body> </html>

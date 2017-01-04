@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Tree-structured approximations by expectation propagation</title>
+</head>
+
+<body>
+<h1>Tree-structured approximations by expectation propagation</h1>
+
+Tom Minka and Yuan Qi, NIPS 2003
+<p>
+
+Approximation structure plays an important role in inference on loopy
+graphs. As a tractable structure, tree approximations have been utilized in
+the variational method of Ghahramani & Jordan (1997) and the sequential
+projection method of Frey et al. (2000).  However, belief propagation
+represents each factor of the graph with a product of single-node messages.
+In this paper, belief propagation is extended to represent factors with
+tree approximations, by way of the expectation propagation framework.  That
+is, each factor sends a "message" to all pairs of nodes in a tree
+structure.  The result is more accurate inferences and more frequent
+convergence than ordinary belief propagation, at a lower cost than
+variational trees or double-loop algorithms.  
+<p>
+
+<a href="minka-eptree.pdf">paper (with corrections)</a>
+.
+<a href="minka-eptree-poster.pdf">poster</a>
+<p>
+
+<hr>
+
+The potentials for the graphs used in the paper are available.
+
+<p>
+This is the example 4-node complete graph:
+<a href="example.zip">example.zip</a>
+<br>
+
+Each line of this file is a potential.  The first two columns give the
+domain and the last four give the values.
+The Matlab file read_pots.m will read this into BNT. </p>
+
+<p>
+Here is the data used to make figure 3: <a href="GridResults.zip">
+GridResults.zip</a><br>
+This is in Matlab MAT format.&nbsp; The readme file describes the contents.
+</p>
+
+<address><a href="/">Tom Minka</a></address>
+<!-- hhmts start -->
+Last modified: Tue Feb 06 13:37:15 GMT 2007
+<!-- hhmts end -->
+</body> </html>

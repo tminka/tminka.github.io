@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Inferring a Gaussian distribution</title>
+</head>
+
+<body>
+<h1>Inferring a Gaussian distribution</h1>
+
+Thomas Minka<br>
+MIT media Lab note (1998)<p>
+
+A common question in statistical modeling is ``which out of a continuum of
+models are likely to have generated this data?''  For the Gaussian class of
+models, this question can be answered completely and exactly.  This paper
+derives the exact posterior distribution over the mean and variance of the
+generating distribution, i.e. <kbd>p(m, V | X)</kbd>, as well as the
+marginals <kbd>p(m | X)</kbd> and <kbd>p(V | X)</kbd>.  It also derives
+<kbd>p(X | Gaussian)</kbd>, the probability that the data came from any
+Gaussian whatsoever.  From this we can get the posterior predictive density
+<kbd>p(x | X)</kbd>, which has the most practical importance.  The analysis
+is done for noninformative priors and for arbitrary conjugate priors.  The
+presentation borrows from MacKay (1995).  The paper concludes with a
+simulated classification experiment demonstrating the advantage of the
+Bayesian method over maximum-likelihood and unbiased estimation.
+<p>
+
+<a href="minka-gaussian.pdf">pdf</a>
+
+<hr>
+<!-- hhmts start -->
+Last modified: Fri Dec 10 14:30:48 GMT 2004
+<!-- hhmts end -->
+</body> </html>
