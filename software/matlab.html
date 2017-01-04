@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html> <head>
+<title>Accelerating Matlab</title>
+</head>
+
+<body>
+<h1>Accelerating Matlab</h1>
+
+Matlab is a very useful programming environment, but it also has many
+inefficiencies.  You might think that these are unavoidable, but in fact it
+is possible to fix most of them, without significantly changing your
+programs.  This page describes some easy ways to modify the Matlab
+environment to make programs run faster.
+<p>
+
+<ol>
+<li>
+Install <a
+href="http://documents.epfl.ch/users/l/le/leuteneg/www/MATLABToolbox/DoubleClass.html">Marcel
+Leutenegger's package of elementary functions</a>.  They speed up functions
+like <kbd>exp</kbd> and <kbd>log</kbd> by a factor of 3 or more, with no
+loss of accuracy.  They directly replace the functions in
+Matlab, so no program modification is required.
+<p>
+
+<li>
+Run <kbd>mex -setup</kbd> and select a good compiler.  
+The default compiler (<kbd>lcc</kbd>) does not produce very good code.
+<p>
+To use Microsoft Visual Studio .NET 2003 version 7.1, 
+you will first need to install a
+<a
+href="http://www.mathworks.com/support/solutions/data/1-1BRI9.html?solution=1-1BRI9">patch</a>.
+Unfortunately, while Visual Studio 7.1 generally produces good code, it has a 
+performance bug in the intrinsic <kbd>exp</kbd> function.  To get around
+this, edit the mex options file
+(<kbd>C:\MATLAB6p5p1\bin\win32\mexopts\msvc71opts.bat</kbd>) to read:
+<pre>set OPTIMFLAGS=/MD -O2 -Oy- /Oi- -DNDEBUG</pre>
+<p>
+After changing the compiler, you should re-compile your mex files, and
+re-install any packages including mex (such as lightspeed).  <p>
+
+<li>
+Install 
+<a href="lightspeed/">lightspeed</a>.  
+It provides optimized implementations of common operations, including a
+C replacement for <kbd>repmat.m</kbd>.
+<p>
+
+<li>
+Profile your code to find bottlenecks:
+<pre>
+profile on
+myfun;
+profile report
+</pre>
+
+<li>
+Avoid loops by writing 'vectorized' code.
+See the MathWorks' <a
+href="http://www.mathworks.com/support/tech-notes/1100/1109.html">Vectorization
+Guide</a>,
+<a href="http://www.ee.columbia.edu/~marios/matlab/matlab_tricks.html">Marios Athineos's tips and tricks</a>,
+and the routines in lightspeed (such as <kbd>sqdist</kbd>).
+
+<!--
+<li>
+The type checking routines (<kbd>isa</kbd>,<kbd>iscell</kbd>,etc.) are
+slow and should be used sparingly.
+-->
+</ol>
+
+<h2>Efficient ways to do common tasks</h2>
+
+<h3>Manipulate sets of integers</h3>
+
+The fastest way to do this is with sparse logical vectors.  If you want to
+use sorted arrays of integers instead, beware that the Matlab functions
+<kbd>setdiff</kbd>, <kbd>union</kbd>, etc. are not optimized for this case
+and will be a bottleneck.  
+Optimized functions for the sorted case are
+included in <a href="lightspeed/">lightspeed</a>.
+
+<h3>Represent a graph</h3>
+
+Use a sparse logical adjacency matrix, and use matrix operations whenever
+possible.  For example, if <kbd>G</kbd> is symmetric (i.e. an undirected
+graph) then <kbd>G*G</kbd> gives the number of neighbors in common to nodes
+<var>i</var> and <var>j</var>, for all <var>(i,j)</var>.  See <a
+href="http://www.ai.mit.edu/~murphyk/Software/">Kevin Murphy's graph toolbox</a>.
+
+<h3>Sample random numbers from various distributions</h3>
+
+Use the functions provided in <a href="lightspeed/">lightspeed</a>.
+
+<h3>Read XML</h3>
+
+<a
+href="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=1742&objectType=FILE">Peter
+Rysadter's XML parser</a>
+was the fastest, but is no longer available.
+Check out the links at <a href="http://undocumentedmatlab.com/blog/undocumented-xml-functionality/">Undocumented XML functionality</a>.
+
+<hr>
+<address><a href="http://www.research.microsoft.com/~minka/">Tom Minka</a></address>
+</body> </html>
