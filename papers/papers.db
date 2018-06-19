@@ -28,15 +28,15 @@
 
 <field bayesian=B>
 <field year="2012">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=164692">A Bayesian Graphical Model for Adaptive Crowdsourcing and Aptitude Testing</a>
+<a href="https://www.microsoft.com/en-us/research/publication/how-to-grade-a-test-without-knowing-the-answers-a-bayesian-graphical-model-for-adaptive-crowdsourcing-and-aptitude-testing/">A Bayesian Graphical Model for Adaptive Crowdsourcing and Aptitude Testing</a>
 
 <field bayesian=B>
 <field year="2012">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=160806">Spot Localization using PHY Layer Information</a>
+<a href="https://www.microsoft.com/en-us/research/publication/spot-localization-using-phy-layer-information/">Spot Localization using PHY Layer Information</a>
 
 <field bayesian=B>
 <field year="2011">
-<a href="http://research.microsoft.com/apps/pubs/?id=194693">Non-conjugate Variational Message Passing for Multinomial and Binary Regression</a>
+<a href="https://www.microsoft.com/en-us/research/publication/non-conjugate-variational-message-passing-for-multinomial-and-binary-regression/">Non-conjugate Variational Message Passing for Multinomial and Binary Regression</a>
 
 <field ep=E>
 <field year="2010">
@@ -44,7 +44,7 @@
 
 <field doc=T bayesian=B modeling=M>
 <field year="2010">
-<a href="http://research.microsoft.com/apps/pubs/?id=119092">A Novel Click Model and Its Applications to Online Advertising</a>
+<a href="https://www.microsoft.com/en-us/research/publication/a-novel-click-model-and-its-applications-to-online-advertising/">A Novel Click Model and Its Applications to Online Advertising</a>
 
 <field modeling=M>
 <field year="2009">
@@ -64,11 +64,11 @@
 
 <field doc=T bayesian=B modeling=M>
 <field year="2009">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=79639">Click Chain Model in Web Search</a>
+<a href="https://www.microsoft.com/en-us/research/publication/click-chain-model-in-web-search/">Click Chain Model in Web Search</a>
 
 <field ep=E modeling=M>
 <field year="2008">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=78856">Gates: A graphical notation for mixture models</a>
+<a href="https://www.microsoft.com/en-us/research/publication/gates-a-graphical-notation-for-mixture-models/">Gates: A graphical notation for mixture models</a>
 
 <field doc=T>
 <field year="2008">
@@ -80,11 +80,11 @@
 
 <field doc=T>
 <field year="2008">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=63585">SoftRank: Optimising Non-Smooth Ranking Metrics</a>
+<a href="https://www.microsoft.com/en-us/research/publication/softrank-optimising-non-smooth-rank-metrics/">SoftRank: Optimising Non-Smooth Ranking Metrics</a>
 
 <field ep=E bayesian=B>
 <field year="2007">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=74417">TrueSkill Through Time: Revisiting the History of Chess</a>
+<a href="https://www.microsoft.com/en-us/research/publication/trueskill-through-time-revisiting-the-history-of-chess/">TrueSkill Through Time: Revisiting the History of Chess</a>
 
 <field doc=T modeling=M>
 <field year="2007">
@@ -92,7 +92,7 @@
 
 <field ep=E bayesian=B>
 <field year="2006">
-<a href="http://research.microsoft.com/apps/pubs/default.aspx?id=67956">TrueSkill: A Bayesian Skill Rating System</a>
+<a href="https://www.microsoft.com/en-us/research/publication/trueskilltm-a-bayesian-skill-rating-system/">TrueSkill: A Bayesian Skill Rating System</a>
 
 <field opt=O>
 <field year="2006">

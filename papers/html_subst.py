@@ -44,6 +44,7 @@
 #
 # Written by Thomas P. Minka
 
+# Requires python3
 from urllib.request import urlopen
 import sgmllib
 import sys
