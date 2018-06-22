@@ -143,7 +143,7 @@
 <field ep=E bayesian=B>
 <field year="2004">
 <field comment="Preventing overfitting in ARD.">
-<a href="http://www.cs.purdue.edu/homes/alanqi/papers/qi-minka-picard-ghahramani-ICML-04.pdf">Predictive Automatic
+<a href="https://www.microsoft.com/en-us/research/publication/predictive-automatic-relevance-determination-expectation-propagation/">Predictive Automatic
 Relevance Determination by Expectation Propagation</a>
 
 <field modeling=M vision=V>
