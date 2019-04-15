@@ -8,7 +8,7 @@
 
 <field bayesian=B>
 <field year="2016">
-<a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01422/full">Bayesian prior choice in IRT estimation using MCMC and variational Bayes</a>
+<a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01422/full">Bayesian prior choice in IRT estimation using MCMC and variational Bayes</a> (<a href="https://github.com/tminka/ItemResponse">code</a>)
 
 <field ep=E>
 <field year="2015">
