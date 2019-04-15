@@ -6,6 +6,10 @@
 <field year="2017">
 <a href="https://www.microsoft.com/en-us/research/publication/belief-propagation-strings/">Belief Propagation with Strings</a>
 
+<field bayesian=B>
+<field year="2016">
+<a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01422/full">Bayesian prior choice in IRT estimation using MCMC and variational Bayes</a>
+
 <field ep=E>
 <field year="2015">
 <a href="http://sms.cam.ac.uk/media/2132075">An introduction to Expectation Propagation (video lecture)</a> <a href="MinkaMaterialsTutorial.pdf">(slides)</a>
